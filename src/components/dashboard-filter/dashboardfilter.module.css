@@ -1,0 +1,54 @@
+.dashboard {
+  display: flex;
+  height: 100%;
+  margin-top: 20px;
+}
+
+.dashboard div.info {
+  width: 100%;
+  overflow-y: scroll;
+  padding-right: 10px;
+}
+
+.dashboard div.map {
+  position: relative;
+  width: 100%;
+  background-image: url("https://i.blogs.es/b4dd5c/maps/1366_2000.png");
+  background-size: cover;
+}
+
+.dashboard div.map button {
+  box-shadow: 0px 3px 12px #65656545;
+  background: var(--white-color);
+  border-radius: 6px;
+  height: 40px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px 0 5px;
+  position: absolute;
+  left: 30px;
+  top: 30px;
+}
+
+.dashboard div.map button:active {
+  transform: scale(0.98);
+}
+
+.dashboard div.map button span {
+  font-weight: 500;
+  color: var(--inactive-gray-color);
+}
+
+.dashboard div.map button img.toLeft {
+  transform: rotate(90deg);
+  transition: transform 0.8s ease;
+}
+
+.dashboard div.map button img.toRight {
+  transform: rotate(-90deg);
+  transition: transform 0.8s ease;
+}

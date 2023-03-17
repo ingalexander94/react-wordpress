@@ -6,16 +6,24 @@ import styles from "./filteritem.module.css";
 const FilterItem = ({ title, items, index, isNumbers }) => {
   const [value, setValue] = useState(items[0]);
   const inputRef = useRef(null);
+  const labelRef = useRef(null);
   const selectItem = (value) => {
-    inputRef.current.checked = false;
+    setTimeout(() => {
+      inputRef.current.checked = false;
+      labelRef.current.classList.remove(styles.item_focus);
+    }, 200);
     setValue(value);
+  };
+
+  const focusedLabel = (_) => {
+    labelRef.current.classList.toggle(styles.item_focus);
   };
 
   return (
     <div className={styles.item_filter}>
       <span>{title}</span>
       <div>
-        <label htmlFor={`filter_${index}`}>
+        <label ref={labelRef} htmlFor={`filter_${index}`}>
           {isNumbers
             ? `${pluralize(value, "habitación", "habitaciones")}`
             : value}
@@ -24,10 +32,21 @@ const FilterItem = ({ title, items, index, isNumbers }) => {
             alt="arrow"
           />
         </label>
-        <input type="checkbox" id={`filter_${index}`} ref={inputRef} />
+        <input
+          type="checkbox"
+          onChange={focusedLabel}
+          id={`filter_${index}`}
+          ref={inputRef}
+        />
         <ul className={isNumbers ? styles.list_numbers : ""}>
-          {items.map((item) => (
-            <li onClick={() => selectItem(item)}>{item}</li>
+          {items.map((item, i) => (
+            <li
+              key={i}
+              className={item === value ? styles.active : ""}
+              onClick={() => selectItem(item)}
+            >
+              {item}
+            </li>
           ))}
         </ul>
       </div>

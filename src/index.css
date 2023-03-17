@@ -9,6 +9,7 @@ body {
   --gray-light-color: #e2e2e2;
   --white-color: #ffffff;
   --orange-color: #e36900;
+  --inactive-gray-color: #707070;
 }
 
 * {

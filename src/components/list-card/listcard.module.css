@@ -1,0 +1,28 @@
+.more_info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--gray-light-color);
+}
+
+.more_info h4 {
+  font-weight: 500;
+}
+
+.more_info label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 10px;
+  cursor: pointer;
+  color: var(--inactive-gray-color);
+  font-weight: 500;
+}
+
+.list_cards {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px 0;
+}

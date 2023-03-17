@@ -1,6 +1,6 @@
 .list_filters {
   display: grid;
-  grid-template-columns: repeat(4, 1fr) 190px;
+  grid-template-columns: repeat(4, 1fr) 200px;
   column-gap: 10px;
 }
 
@@ -32,6 +32,7 @@
 .btn_filters button span {
   font-weight: 500;
   font-size: 14px;
+  color: var(--inactive-gray-color);
 }
 
 .btn_filters button img {

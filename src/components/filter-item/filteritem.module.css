@@ -24,6 +24,11 @@
   box-shadow: inset 0px 0px 10px #00000048;
   cursor: pointer;
   font-weight: 500;
+  user-select: none;
+}
+
+.item_filter div label.item_focus {
+  border: 2px solid var(--orange-color) !important;
 }
 
 .item_filter div ul {
@@ -40,18 +45,19 @@
   box-shadow: 0px 3px 12px #65656545;
   cursor: pointer;
   position: absolute;
+  z-index: 1000;
+  user-select: none;
 }
 
 .item_filter div ul.list_numbers {
   flex-direction: row;
   justify-content: space-between;
-  column-gap: 5px;
-  padding: 10px 5px 10px 10px;
+  column-gap: 10px;
+  padding: 10px 10px 10px 15px;
 }
 
 .item_filter div ul.list_numbers li {
   width: 100%;
-  height: 35px;
   border-radius: 6px;
   color: var(--gray-color);
   text-align: center;
@@ -59,14 +65,21 @@
   border: 2px solid var(--gray-light-color);
 }
 
-.item_filter div ul.list_numbers li:hover {
-  background: unset;
-}
-
-.item_filter div ul.list_numbers li:target {
+.item_filter div ul.list_numbers li.active {
+  border: 2px solid var(--orange-color);
   background: var(--orange-color);
   color: var(--white-color);
+}
+
+.item_filter div ul.list_numbers li:hover {
+  background: transparent;
+  border: 2px solid var(--black-color);
+}
+
+.item_filter div ul.list_numbers li.active:hover {
+  background: var(--orange-color);
   border: 2px solid var(--orange-color);
+  transition: all 0.2s ease;
 }
 
 .item_filter div ul li {
