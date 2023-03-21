@@ -40,6 +40,23 @@ export const DashboardFilter = () => {
           <span>Mostrar {showInfo ? "mapa" : "listado"}</span>
         </button>
       </div>
+      <div className={styles.nav_mobile}>
+        <button onClick={toggleMap}>
+          <img
+            className={showInfo ? styles.toLeft : styles.toRight}
+            src={`${process.env.PUBLIC_URL}/assets/icons/Flecha_positivo.svg`}
+            alt="arrow"
+          />
+          <span>Mostrar {showInfo ? "mapa" : "listado"}</span>
+        </button>
+        <button>
+          <span>Filtro Avanzado</span>
+          <img
+            src={`${process.env.PUBLIC_URL}/assets/icons/filtro_avanzado.svg`}
+            alt="bars"
+          />
+        </button>
+      </div>
     </section>
   );
 };

@@ -32,3 +32,14 @@
   gap: 20px 0;
   padding-bottom: 120px;
 }
+
+@media only screen and (max-width: 420px) {
+  .list_cards {
+    grid-template-columns: 1fr;
+    row-gap: 40px;
+  }
+
+  .more_info {
+    border-bottom: none;
+  }
+}

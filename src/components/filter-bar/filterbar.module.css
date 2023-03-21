@@ -39,3 +39,9 @@
   height: 34px;
   width: 34px;
 }
+
+@media only screen and (max-width: 420px) {
+  .list_filters {
+    display: none;
+  }
+}
