@@ -15,8 +15,8 @@
 .dashboard div.map {
   position: relative;
   width: 100%;
-  background-image: url("https://i.blogs.es/b4dd5c/maps/1366_2000.png");
-  background-size: cover;
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
 }
 
 .dashboard div.map button {
@@ -32,6 +32,7 @@
   justify-content: space-between;
   padding: 0 20px 0 5px;
   position: absolute;
+  z-index: 1;
   left: 30px;
   top: 30px;
 }

@@ -1,10 +1,23 @@
-import { useState } from "react";
+import { Map } from "mapbox-gl";
+import { useLayoutEffect, useRef, useState } from "react";
 import { ListCard } from "../list-card/ListCard";
-import { Marker } from "../marker/Marker";
 import styles from "./dashboardfilter.module.css";
 
 export const DashboardFilter = () => {
-  const [showInfo, setShowInfo] = useState(true);
+  const [showInfo, setShowInfo] = useState(false);
+  const mapDiv = useRef(null);
+
+  useLayoutEffect(() => {
+    if (true) {
+      const map = new Map({
+        container: mapDiv.current,
+        style: "mapbox://styles/mapbox/light-v10",
+        center: [-72.50782, 7.89391],
+        zoom: 12,
+      });
+      setShowInfo(true);
+    }
+  }, []);
 
   const toggleMap = () => {
     setShowInfo(!showInfo);
@@ -17,7 +30,7 @@ export const DashboardFilter = () => {
           <ListCard />
         </div>
       )}
-      <div className={styles.map}>
+      <div ref={mapDiv} className={styles.map}>
         <button onClick={toggleMap}>
           <img
             className={showInfo ? styles.toLeft : styles.toRight}
@@ -26,7 +39,6 @@ export const DashboardFilter = () => {
           />
           <span>Mostrar {showInfo ? "mapa" : "listado"}</span>
         </button>
-        <Marker />
       </div>
     </section>
   );
