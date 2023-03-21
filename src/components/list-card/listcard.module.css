@@ -8,6 +8,7 @@
 
 .more_info h4 {
   font-weight: 500;
+  font-size: 14px;
 }
 
 .more_info label {
@@ -16,8 +17,12 @@
   align-items: center;
   column-gap: 10px;
   cursor: pointer;
+}
+
+.more_info label span {
   color: var(--inactive-gray-color);
   font-weight: 500;
+  font-size: 16px;
 }
 
 .list_cards {
@@ -25,4 +30,5 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 20px 0;
+  padding-bottom: 120px;
 }

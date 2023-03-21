@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { ListCard } from "../list-card/ListCard";
+import { Marker } from "../marker/Marker";
 import styles from "./dashboardfilter.module.css";
 
 export const DashboardFilter = () => {
@@ -25,6 +26,7 @@ export const DashboardFilter = () => {
           />
           <span>Mostrar {showInfo ? "mapa" : "listado"}</span>
         </button>
+        <Marker />
       </div>
     </section>
   );
