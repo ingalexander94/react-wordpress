@@ -1,11 +1,13 @@
 import { Map } from "mapbox-gl";
-import { useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { ListCard } from "../list-card/ListCard";
 import styles from "./dashboardfilter.module.css";
 
 export const DashboardFilter = () => {
   const [showInfo, setShowInfo] = useState(false);
+  const [showMap, setShowMap] = useState(false);
   const mapDiv = useRef(null);
+  const targetRef = useRef(null);
 
   useLayoutEffect(() => {
     if (true) {
@@ -16,12 +18,31 @@ export const DashboardFilter = () => {
         zoom: 12,
       });
       setShowInfo(true);
+      setShowMap(true);
     }
   }, []);
 
   const toggleMap = () => {
     setShowInfo(!showInfo);
   };
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) {
+          console.log("Sissass");
+        }
+      },
+      {
+        rootMargin: "0px 0px",
+      }
+    );
+
+    observer.observe(mapDiv.current);
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
 
   return (
     <section className={styles.dashboard}>
@@ -30,7 +51,7 @@ export const DashboardFilter = () => {
           <ListCard />
         </div>
       )}
-      <div ref={mapDiv} className={styles.map}>
+      <div ref={mapDiv} className={styles.map} id="map">
         <button onClick={toggleMap}>
           <img
             className={showInfo ? styles.toLeft : styles.toRight}
@@ -41,14 +62,17 @@ export const DashboardFilter = () => {
         </button>
       </div>
       <div className={styles.nav_mobile}>
-        <button onClick={toggleMap}>
+        <a
+          href={`/#${showMap ? "map" : "info"}`}
+          onClick={() => setShowMap(!showMap)}
+        >
           <img
             className={showInfo ? styles.toLeft : styles.toRight}
             src={`${process.env.PUBLIC_URL}/assets/icons/Flecha_positivo.svg`}
             alt="arrow"
           />
-          <span>Mostrar {showInfo ? "mapa" : "listado"}</span>
-        </button>
+          <span>Mostrar {showMap ? "listado" : "mapa"}</span>
+        </a>
         <button>
           <span>Filtro Avanzado</span>
           <img

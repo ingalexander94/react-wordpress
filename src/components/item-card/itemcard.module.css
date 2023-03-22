@@ -5,6 +5,8 @@
   border-top-left-radius: 6px;
   grid-template-rows: 200px auto;
   margin: 0 10px;
+  border-radius: 6px;
+  overflow: hidden;
 }
 
 .item_card img {

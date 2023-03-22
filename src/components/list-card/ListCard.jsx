@@ -11,7 +11,7 @@ export const ListCard = () => {
     <>
       <div className={styles.more_info}>
         <h4>10 Resultados encontrados</h4>
-        <label>
+        <label id="info">
           <span>Más información</span>
           <img
             src={`${process.env.PUBLIC_URL}/assets/icons/icono_más_información.svg`}

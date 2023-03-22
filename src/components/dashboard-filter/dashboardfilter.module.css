@@ -107,11 +107,13 @@
     width: 100vw;
   }
 
-  .nav_mobile button {
+  .nav_mobile button,
+  .nav_mobile a {
     display: flex;
     justify-content: center;
     align-items: center;
     column-gap: 10px;
+    text-decoration: none;
   }
 
   .nav_mobile button:active {
@@ -133,13 +135,14 @@
     padding: 5px 10px;
   }
 
-  .nav_mobile button span {
+  .nav_mobile button span,
+  .nav_mobile a span {
     font-size: 16px;
     font-weight: 500;
     color: var(--inactive-gray-color);
   }
 
-  .nav_mobile button:nth-child(1) img {
+  .nav_mobile label img {
     border: none;
     outline: none;
     background: white;
