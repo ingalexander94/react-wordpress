@@ -1,17 +1,17 @@
 import { Map } from "mapbox-gl";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { ListCard } from "../list-card/ListCard";
+import { Marker } from "../marker/Marker";
 import styles from "./dashboardfilter.module.css";
 
 export const DashboardFilter = () => {
   const [showInfo, setShowInfo] = useState(false);
   const [showMap, setShowMap] = useState(false);
   const mapDiv = useRef(null);
-  const targetRef = useRef(null);
 
   useLayoutEffect(() => {
     if (true) {
-      const map = new Map({
+      new Map({
         container: mapDiv.current,
         style: "mapbox://styles/mapbox/light-v10",
         center: [-72.50782, 7.89391],
@@ -29,9 +29,7 @@ export const DashboardFilter = () => {
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (!entry.isIntersecting) {
-          console.log("Sissass");
-        }
+        setShowMap(entry.isIntersecting);
       },
       {
         rootMargin: "0px 0px",
@@ -44,14 +42,26 @@ export const DashboardFilter = () => {
     };
   }, []);
 
+  const handleMoveScroll = () => {
+    if (!showMap) {
+      mapDiv.current.scrollIntoView({ behavior: "smooth", block: "center" });
+    } else {
+      document
+        .getElementById("info")
+        .scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+    setShowMap(!showMap);
+  };
+
   return (
     <section className={styles.dashboard}>
       {showInfo && (
         <div className={styles.info}>
+          <div className={styles.badget} onClick={handleMoveScroll}></div>
           <ListCard />
         </div>
       )}
-      <div ref={mapDiv} className={styles.map} id="map">
+      <div ref={mapDiv} className={styles.map}>
         <button onClick={toggleMap}>
           <img
             className={showInfo ? styles.toLeft : styles.toRight}
@@ -60,19 +70,17 @@ export const DashboardFilter = () => {
           />
           <span>Mostrar {showInfo ? "mapa" : "listado"}</span>
         </button>
+        <Marker />
       </div>
       <div className={styles.nav_mobile}>
-        <a
-          href={`/#${showMap ? "map" : "info"}`}
-          onClick={() => setShowMap(!showMap)}
-        >
+        <button onClick={handleMoveScroll}>
           <img
-            className={showInfo ? styles.toLeft : styles.toRight}
+            className={showMap ? styles.toUp : styles.toBottom}
             src={`${process.env.PUBLIC_URL}/assets/icons/Flecha_positivo.svg`}
             alt="arrow"
           />
           <span>Mostrar {showMap ? "listado" : "mapa"}</span>
-        </a>
+        </button>
         <button>
           <span>Filtro Avanzado</span>
           <img

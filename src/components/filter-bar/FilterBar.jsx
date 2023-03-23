@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   numberRooms,
   propertyStatus,
@@ -5,9 +6,14 @@ import {
   sectors,
 } from "../../utils/data";
 import FilterItem from "../filter-item/FilterItem";
+import FilterModal from "../filter-modal/FilterModal";
 import styles from "./filterbar.module.css";
 
 export const FilterBar = () => {
+  const [showModal, setShowModal] = useState(false);
+
+  const toggleShowModal = () => setShowModal(!showModal);
+
   return (
     <section className={styles.list_filters}>
       <FilterItem
@@ -32,10 +38,12 @@ export const FilterBar = () => {
         title={"Número de habitaciones"}
         items={numberRooms}
         index={4}
+        singular={"habitación"}
+        plural={"habitaciones"}
         isNumbers={true}
       />
       <div className={styles.btn_filters}>
-        <button>
+        <button onClick={toggleShowModal}>
           <span>Filtro Avanzado</span>
           <img
             src={`${process.env.PUBLIC_URL}/assets/icons/filtro_avanzado.svg`}
@@ -43,6 +51,7 @@ export const FilterBar = () => {
           />
         </button>
       </div>
+      {showModal && <FilterModal close={toggleShowModal} />}
     </section>
   );
 };

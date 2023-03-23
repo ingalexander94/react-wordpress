@@ -3,7 +3,14 @@ import { useRef, useState } from "react";
 import { pluralize } from "../../utils/pipes";
 import styles from "./filteritem.module.css";
 
-const FilterItem = ({ title, items, index, isNumbers }) => {
+const FilterItem = ({
+  title,
+  items,
+  index,
+  isNumbers,
+  singular = "",
+  plural = "",
+}) => {
   const [value, setValue] = useState(items[0]);
   const inputRef = useRef(null);
   const labelRef = useRef(null);
@@ -24,9 +31,8 @@ const FilterItem = ({ title, items, index, isNumbers }) => {
       <span>{title}</span>
       <div>
         <label ref={labelRef} htmlFor={`filter_${index}`}>
-          {isNumbers
-            ? `${pluralize(value, "habitación", "habitaciones")}`
-            : value}
+          {isNumbers && singular === "" ? "Estrato " : ""}{" "}
+          {isNumbers ? `${pluralize(value, singular, plural)}` : value}
           <img
             src={`${process.env.PUBLIC_URL}/assets/icons/Flecha_positivo.svg`}
             alt="arrow"
@@ -58,6 +64,8 @@ FilterItem.propTypes = {
   index: PropTypes.number.isRequired,
   items: PropTypes.array.isRequired,
   isNumbers: PropTypes.bool.isRequired,
+  singular: PropTypes.string,
+  plural: PropTypes.string,
 };
 
 export default FilterItem;
