@@ -127,9 +127,9 @@ div.modal_bars > div label input::-webkit-slider-thumb {
   box-shadow: 0px 3px 6px #00000029;
 }
 
-div.modal_search > div.services {
+div.services {
   display: grid;
-  grid-template-columns: repeat(4, 3fr);
+  grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(3, 20px);
   column-gap: 20px;
 }
@@ -152,43 +152,140 @@ div.services > div.check_service label {
   font-weight: 500;
 }
 
-div.modal_search > div.reset_filters {
+div.reset_filters_mobile {
+  display: none !important;
+}
+
+div.reset_filters {
   display: flex;
   flex-direction: column;
 }
 
-div.modal_search > div.reset_filters button {
+div.reset_filters button {
   cursor: pointer;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: center !important;
+  justify-content: center !important;
   column-gap: 5px;
 }
 
-div.modal_search > div.reset_filters button:nth-child(1) {
+div.reset_filters button:nth-child(1) {
   background: var(--orange-color);
   border-radius: 6px;
   padding: 5px 0 5px 10px;
   width: 170px;
 }
 
-div.modal_search > div.reset_filters button:nth-child(1) span {
+div.reset_filters button:nth-child(1) span {
   color: white;
   font-size: 20px;
   font-weight: bold;
 }
 
-div.modal_search > div.reset_filters button:nth-child(1) img {
+div.reset_filters button:nth-child(1) img {
   transform: rotate(0deg);
 }
 
-div.modal_search > div.reset_filters button:nth-child(2) span {
+div.reset_filters button:nth-child(2) span {
   color: var(--inactive-gray-color);
   font-size: 16px;
   font-weight: 500;
   border-radius: 6px;
 }
 
-div.modal_search > div.reset_filters button:nth-child(2) img {
+div.reset_filters button:nth-child(2) img {
   transform: rotate(360deg);
+}
+
+@media only screen and (min-width: 1350px) {
+  div.modal > div {
+    width: 50%;
+  }
+}
+
+@media only screen and (max-width: 420px) {
+  div.modal_wrapper {
+    height: 75%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    margin-bottom: 30px;
+    padding-bottom: 10px;
+  }
+
+  div.modal {
+    display: grid;
+    place-items: center;
+  }
+
+  div.modal > div {
+    height: 80%;
+    width: 90%;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  div.modal_filters {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    row-gap: 25px;
+    position: relative;
+  }
+
+  div.modal_bars {
+    display: flex;
+    flex-direction: column;
+    column-gap: 0;
+    row-gap: 20px;
+  }
+
+  div.modal_search {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    row-gap: 30px;
+  }
+
+  div.modal_search > div.services {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 20px);
+    column-gap: 20px;
+    row-gap: 10px;
+  }
+
+  div.reset_filters_mobile {
+    display: flex !important;
+  }
+
+  div.reset_filters_web {
+    display: none !important;
+  }
+
+  div.reset_filters {
+    align-items: center;
+  }
+
+  div.reset_filters button:nth-child(1) {
+    width: 100%;
+  }
+
+  div.reset_filters button {
+    column-gap: 0px;
+  }
+
+  div.reset_filters button:nth-child(1) span {
+    text-align: center;
+    width: 100%;
+  }
+
+  div.reset_filters_web {
+    display: none;
+  }
+
+  div.reset_filters button:nth-child(2) {
+    width: 170px;
+  }
 }

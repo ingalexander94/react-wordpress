@@ -1,5 +1,6 @@
 import { Map } from "mapbox-gl";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import FilterModal from "../filter-modal/FilterModal";
 import { ListCard } from "../list-card/ListCard";
 import { Marker } from "../marker/Marker";
 import styles from "./dashboardfilter.module.css";
@@ -7,6 +8,7 @@ import styles from "./dashboardfilter.module.css";
 export const DashboardFilter = () => {
   const [showInfo, setShowInfo] = useState(false);
   const [showMap, setShowMap] = useState(false);
+  const [showModal, setShowModal] = useState(false);
   const mapDiv = useRef(null);
 
   useLayoutEffect(() => {
@@ -15,7 +17,7 @@ export const DashboardFilter = () => {
         container: mapDiv.current,
         style: "mapbox://styles/mapbox/light-v10",
         center: [-72.50782, 7.89391],
-        zoom: 12,
+        zoom: 8,
       });
       setShowInfo(true);
       setShowMap(true);
@@ -81,7 +83,7 @@ export const DashboardFilter = () => {
           />
           <span>Mostrar {showMap ? "listado" : "mapa"}</span>
         </button>
-        <button>
+        <button onClick={() => setShowModal(!showModal)}>
           <span>Filtro Avanzado</span>
           <img
             src={`${process.env.PUBLIC_URL}/assets/icons/filtro_avanzado.svg`}
@@ -89,6 +91,7 @@ export const DashboardFilter = () => {
           />
         </button>
       </div>
+      {showModal && <FilterModal close={() => setShowModal(false)} />}
     </section>
   );
 };
