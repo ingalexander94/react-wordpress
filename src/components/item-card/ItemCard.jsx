@@ -49,7 +49,7 @@ export const ItemCard = () => {
             <p>Desde</p>
             <span>$ 180 SMMLV*</span>
           </div>
-          <a href="/">
+          <a href="http://viviendas-y-valores.local/detalle-inmueble/">
             Ver
             <img
               src={`${process.env.PUBLIC_URL}/assets/icons/Flecha_positivo.svg`}
